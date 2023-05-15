@@ -3,10 +3,17 @@ import axios from 'axios';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 
 interface ErrorData {
-  id: number;
-  message: string;
-  level: number;
-  source: number;
+  date: number;
+  level: string;
+  quelle: number;
+  status: number;
+  id_user: number,
+  id_firma: number;
+  id_car: number;
+  id_data: number;
+  id_proto: number;
+  id_portal: number;
+  msg: string;
   // Diğer özellikler
 }
 
@@ -27,26 +34,41 @@ const ErrorLog = () => {
       console.error(error);
     }
   };
+  console.log(errorData);
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} style={{ width: '100%', height: '100vh' }}>
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>ID</TableCell>
-            <TableCell>Error Message</TableCell>
+            <TableCell>Datum</TableCell>
             <TableCell>Level</TableCell>
-            <TableCell>Source</TableCell>
+            <TableCell>Quelle</TableCell>
+            <TableCell>Status</TableCell>
+            <TableCell>Firma</TableCell>
+            <TableCell>User</TableCell>
+            <TableCell>Fahrzeug ID</TableCell>
+            <TableCell>Data ID</TableCell>
+            <TableCell>Protokoll ID</TableCell>
+            <TableCell>Portal</TableCell>
+            <TableCell>Kurzbeschreibung</TableCell>
             {/* Diğer sütunlar */}
           </TableRow>
         </TableHead>
         <TableBody>
-          {errorData.map((error) => (
-            <TableRow key={error.id}>
-              <TableCell>{error.id}</TableCell>
-              <TableCell>{error.message}</TableCell>
+          {errorData.map((error,index) => (
+            <TableRow key={index}>
+              <TableCell>{error.date}</TableCell>
               <TableCell>{error.level}</TableCell>
-              <TableCell>{error.source}</TableCell>
+              <TableCell>{error.quelle}</TableCell>
+              <TableCell>{error.status}</TableCell>
+              <TableCell>{error.id_firma}</TableCell>
+              <TableCell>{error.id_user}</TableCell>
+              <TableCell>{error.id_car}</TableCell>
+              <TableCell>{error.id_data}</TableCell>
+              <TableCell>{error.id_proto}</TableCell>
+              <TableCell>{error.id_portal}</TableCell>
+              <TableCell>{error.msg}</TableCell>
               {/* Diğer sütunlar */}
             </TableRow>
           ))}
